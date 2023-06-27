@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, ActivityIndicator, RefreshControl, StyleSheet } from 'react-native';
-import axios from 'axios';
-import BookCard from '../components/BookCard';
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, ActivityIndicator, RefreshControl, StyleSheet } from "react-native";
+import axios from "axios";
+import BookCard from "../components/BookCard";
 
 const BookListScreen = ({ navigation }) => {
   const [books, setBooks] = useState([]);
@@ -13,7 +13,7 @@ const BookListScreen = ({ navigation }) => {
   }, []);
 
   const fetchData = async () => {
-    const baseUrl = 'https://booklist-2lpq.onrender.com/api';
+    const baseUrl = "https://booklist-2lpq.onrender.com/api";
 
     try {
       const response = await axios.get(`${baseUrl}/books`);
@@ -31,7 +31,7 @@ const BookListScreen = ({ navigation }) => {
   };
 
   const handleBookPress = (book) => {
-    navigation.navigate('BookDetails', { book });
+    navigation.navigate("BookDetails", { book });
   };
 
   const renderBookCard = ({ item }) => {
@@ -44,7 +44,7 @@ const BookListScreen = ({ navigation }) => {
 
       {isLoading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size='large' color='black' />
+          <ActivityIndicator size="large" color="black" />
           <Text style={styles.loadingText}>Loading...</Text>
         </View>
       ) : (
@@ -65,27 +65,26 @@ const BookListScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // paddingTop: 40,
     padding: 2,
   },
 
   header: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 10,
     fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 
   loadingContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   loadingText: {
     fontSize: 20,
-    fontWeight: 'semibold',
+    fontWeight: "semibold",
     marginTop: 20,
   },
 });
